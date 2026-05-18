@@ -4,7 +4,7 @@ Plugin [Claude Code](https://code.claude.com/) od **Xentivo sp. z o.o.** — trw
 plikowa pamięć między sesjami i strukturalna mapa repozytorium. Bez zewnętrznych
 zależności, zero kosztów API poza samym Claude.
 
-**Repozytorium:** https://bitbucket.org/xentivo/claude
+**Repozytorium:** https://github.com/xentivo/claude-plugins
 
 ## Po co
 
@@ -31,7 +31,7 @@ tworzy katalog i szablony z wbudowanych assetów.
 W dowolnym projekcie z Claude Code:
 
 ```
-/plugin marketplace add https://bitbucket.org/xentivo/claude.git
+/plugin marketplace add xentivo/claude-plugins
 /plugin install claude-memory@claude-memory
 ```
 

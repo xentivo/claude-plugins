@@ -25,11 +25,11 @@ a to repo pełni jednocześnie rolę marketplace:
 Instalacja w dowolnym projekcie:
 
 ```
-/plugin marketplace add https://bitbucket.org/xentivo/claude.git
+/plugin marketplace add xentivo/claude-plugins
 /plugin install claude-memory@claude-memory
 ```
 
-Repozytorium: https://bitbucket.org/xentivo/claude
+Repozytorium: https://github.com/xentivo/claude-plugins
 
 Komendy są namespace'owane: `/claude-memory:resume`, `/claude-memory:save`,
 `/claude-memory:graph`. Pamięć (`docs/claude-memory/`) jest per-projekt —

@@ -20,9 +20,9 @@ komendy są namespace'owane prefiksem `claude-memory:`:
 - `save` (`/claude-memory:save`) — na końcu sesji: Claude zapisuje nowy log sesji (z odnośnikami do dotkniętych plików) i w razie potrzeby dopisuje wpis do `decisions.md`. Przyjmuje opcjonalny argument: krótki slug opisu sesji. Odświeża też `graph.json`.
 - `graph` (`/claude-memory:graph`) — buduje/odpytuje strukturalną mapę repo `graph.json` (korzeń) generowaną lokalnie przez generator wbudowany w skill (`generate_graph.py` obok `SKILL.md`), bez zewnętrznych narzędzi. Odpytuj ją zamiast skanować repo.
 
-Instalacja w innym projekcie: `/plugin marketplace add https://bitbucket.org/xentivo/claude.git` → `/plugin install claude-memory@claude-memory`.
+Instalacja w innym projekcie: `/plugin marketplace add xentivo/claude-plugins` → `/plugin install claude-memory@claude-memory`.
 
-Repozytorium: https://bitbucket.org/xentivo/claude
+Repozytorium: https://github.com/xentivo/claude-plugins
 
 ## Zasady wpisów
 

@@ -21,10 +21,10 @@ Logika pamięci żyje jako Skille Anthropic spakowane w plugin `claude-memory`
 - `/claude-memory:save` — na końcu sesji zapisuje log i ew. decyzję; odświeża `graph.json`.
 - `/claude-memory:graph` — buduje/odpytuje strukturalną mapę repo `graph.json`.
 
-Instalacja: `/plugin marketplace add https://bitbucket.org/xentivo/claude.git` →
+Instalacja: `/plugin marketplace add xentivo/claude-plugins` →
 `/plugin install claude-memory@claude-memory`.
 
-Repozytorium: https://bitbucket.org/xentivo/claude
+Repozytorium: https://github.com/xentivo/claude-plugins
 
 ## Zasady wpisów
 

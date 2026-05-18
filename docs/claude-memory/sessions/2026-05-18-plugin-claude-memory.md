@@ -31,6 +31,6 @@
 
 ## TODO / następny krok
 
-- Instalacja: `/plugin marketplace add https://bitbucket.org/xentivo/claude.git` →
+- Instalacja: `/plugin marketplace add xentivo/claude-plugins` →
   `/plugin install claude-memory@claude-memory`.
 - W tej sesji web skille nieaktywne do dodania marketplace (świadome).
