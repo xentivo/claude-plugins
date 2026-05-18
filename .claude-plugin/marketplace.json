@@ -7,8 +7,8 @@
   "plugins": [
     {
       "name": "claude-memory",
-      "source": "plugins/claude-memory",
-      "repository": "https://github.com/xentivo/claude-plugins"
+      "description": "Claude memory - zaoszczędź tokeny",
+      "source": "./plugins/claude-memory"
     }
   ]
 }
