@@ -1,0 +1,118 @@
+{
+  "generated": "2026-05-18T16:15:24Z",
+  "root": ".",
+  "stats": {
+    "files_scanned": 19,
+    "nodes": 19,
+    "edges": 0
+  },
+  "nodes": [
+    {
+      "id": ".claude-plugin/marketplace.json",
+      "type": "other",
+      "size": 184
+    },
+    {
+      "id": ".claude/settings.local.json",
+      "type": "other",
+      "size": 214
+    },
+    {
+      "id": "CLAUDE.md",
+      "type": "markdown",
+      "size": 1878
+    },
+    {
+      "id": "docs/claude-memory/README.md",
+      "type": "markdown",
+      "size": 1983
+    },
+    {
+      "id": "docs/claude-memory/decisions.md",
+      "type": "markdown",
+      "size": 5054
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-05-18-add-code-memory-system.md",
+      "type": "markdown",
+      "size": 1056
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-05-18-add-graph-generator.md",
+      "type": "markdown",
+      "size": 1359
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-05-18-convert-rules-to-skills.md",
+      "type": "markdown",
+      "size": 1210
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-05-18-plugin-claude-memory.md",
+      "type": "markdown",
+      "size": 1624
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-05-18-portable-skills.md",
+      "type": "markdown",
+      "size": 1490
+    },
+    {
+      "id": "docs/claude-memory/sessions/_TEMPLATE.md",
+      "type": "markdown",
+      "size": 360
+    },
+    {
+      "id": "plugins/claude-memory/.claude-plugin/plugin.json",
+      "type": "other",
+      "size": 160
+    },
+    {
+      "id": "plugins/claude-memory/skills/graph/SKILL.md",
+      "type": "markdown",
+      "size": 2630
+    },
+    {
+      "id": "plugins/claude-memory/skills/graph/generate_graph.py",
+      "type": "python",
+      "size": 7779,
+      "symbols": [
+        "build",
+        "classify",
+        "iter_files",
+        "main",
+        "python_symbols_and_imports",
+        "read_text",
+        "resolve_py_import",
+        "resolve_relative",
+        "resolve_wikilink"
+      ]
+    },
+    {
+      "id": "plugins/claude-memory/skills/resume/SKILL.md",
+      "type": "markdown",
+      "size": 1730
+    },
+    {
+      "id": "plugins/claude-memory/skills/save/SKILL.md",
+      "type": "markdown",
+      "size": 2462
+    },
+    {
+      "id": "plugins/claude-memory/skills/save/assets/README.md",
+      "type": "markdown",
+      "size": 1443
+    },
+    {
+      "id": "plugins/claude-memory/skills/save/assets/_TEMPLATE.md",
+      "type": "markdown",
+      "size": 360
+    },
+    {
+      "id": "plugins/claude-memory/skills/save/assets/decisions.md",
+      "type": "markdown",
+      "size": 166
+    }
+  ],
+  "edges": []
+}

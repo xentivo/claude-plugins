@@ -1,0 +1,14 @@
+{
+  "name": "claude-memory",
+  "description": "Marketplace pluginów Claude memory (Xentivo)",
+  "owner": {
+    "name": "Xentivo sp. z o.o."
+  },
+  "plugins": [
+    {
+      "name": "claude-memory",
+      "source": "plugins/claude-memory",
+      "repository": "https://bitbucket.org/xentivo/claude"
+    }
+  ]
+}
