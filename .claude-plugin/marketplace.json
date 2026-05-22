@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "claude-memory",
-      "description": "Claude memory - zaoszczędź tokeny",
+      "description": "Claude memory - zaoszczędź dużo tokenów",
       "source": "./plugins/claude-memory"
     }
   ]
