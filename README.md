@@ -88,7 +88,3 @@ projektowa i globalna.
 
 - [Claude Code](https://code.claude.com/) z obsługą pluginów i skilli
 - Python 3 (tylko do generatora `graph.json`; biblioteka standardowa)
-
-## Licencja
-
-Własność Xentivo sp. z o.o. udostępnione do użytku publicznego.
