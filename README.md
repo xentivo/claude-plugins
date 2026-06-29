@@ -91,5 +91,4 @@ projektowa i globalna.
 
 ## Licencja
 
-Własność Xentivo sp. z o.o. — użycie wewnętrzne zespołu; szczegóły ustal z
-właścicielem repozytorium.
+Własność Xentivo sp. z o.o. udostępnione do użytku publicznego.
