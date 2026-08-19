@@ -82,8 +82,12 @@ Szczegóły: [`docs/claude-memory/README.md`](docs/claude-memory/README.md).
 # czlowiek
 
 Redakcja polskich tekstów. Usuwa wzorce typowe dla nieredagowanego wyjścia modelu
-i doprowadza tekst do ustalonego głosu autorki. Jeden skill, `/czlowiek:czlowiek`,
-odpalany też automatycznie przy pisaniu i redagowaniu polskich tekstów.
+i doprowadza tekst do ustalonego głosu autorki.
+
+| Co | Komenda | Kiedy |
+| --- | --- | --- |
+| **komenda** `humanizuj` | `/czlowiek:humanizuj <tekst\|plik>` | Kiedy chcesz zredagować konkretny tekst albo plik |
+| **skill** `czlowiek` | `/czlowiek:czlowiek` | To samo; odpala się też sam przy pisaniu i redagowaniu polskich tekstów |
 
 Pełny opis: [`plugins/czlowiek/README.md`](plugins/czlowiek/README.md).
 Autorka: Izabella Pyrkosz, licencja MIT ([`plugins/czlowiek/LICENSE`](plugins/czlowiek/LICENSE)).
@@ -106,6 +110,7 @@ plugins/
 │           └── generate_graph.py # generator graph.json (stdlib)
 └── czlowiek/
     ├── .claude-plugin/plugin.json
+    ├── commands/humanizuj.md     # ręczne wyzwolenie skilla
     └── skills/
         └── czlowiek/SKILL.md
 ```

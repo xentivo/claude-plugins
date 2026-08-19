@@ -33,9 +33,27 @@
 - LICENSE `czlowieka` zostaje przy pluginie zamiast być scalony z korzeniowym,
   bo prawa autorskie należą do kogoś innego niż Xentivo.
 
+## Runda 2 (po merge'u PR #1)
+
+- **Nadprogramowe pliki.** Równolegle z PR #1 wgrano na `main` kolejną kopię
+  pluginu: `.claude-plugin/czlowiek-humanizator/czlowiek-skill/` (4 pliki)
+  plus paczka `czlowiek.plugin` (zip). Merge ich nie usunął, bo leżały pod
+  innymi ścieżkami niż te, które kasował PR. `SKILL.md` i `LICENSE` bajt
+  w bajt takie same jak w `plugins/czlowiek/`, README bez sekcji Instalacja
+  i Licencja — czyli starsze. Cały katalog usunięty.
+- Z paczki `czlowiek.plugin` przeniesiono do manifestu `keywords` i `license`
+  (jedyne, czego w nim brakowało); reszta była duplikatem.
+- **Nowa komenda** `plugins/czlowiek/commands/humanizuj.md` →
+  `/czlowiek:humanizuj [tekst|plik]`. Woła skill przez
+  `${CLAUDE_PLUGIN_ROOT}/skills/czlowiek/SKILL.md`, ma
+  `disable-model-invocation: true`, żeby nie dublować automatycznego
+  wyzwalania skilla. Wersja pluginu 1.0.0 → 1.1.0.
+
 ## TODO / następny krok
 
-- Merge PR #1.
 - Po merge'u użytkownicy z dodanym starym marketplace muszą zrobić
   `/plugin marketplace remove claude-memory` i dodać ponownie — zmiana nazwy
   nie jest wstecznie zgodna.
+- **Nie wrzucać pluginów przez „Add files via upload" w GitHub UI.** Dwa razy
+  z rzędu wylądowały w `.claude-plugin/` i raz zgubiły `plugin.json`. Miejsce
+  na plugin to `plugins/<nazwa>/`.

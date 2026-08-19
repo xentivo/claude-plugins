@@ -7,11 +7,23 @@ Plugin do redakcji polskich tekstów. Robi dwie rzeczy naraz: usuwa z tekstu wzo
 | Komponent | Ile | Do czego |
 |---|---|---|
 | Skille | 1 | `czlowiek` — redakcja i humanizacja polskiego tekstu |
+| Komendy | 1 | `/czlowiek:humanizuj` — ręczne wyzwolenie na wskazanym tekście lub pliku |
 | Agenci | 0 | niepotrzebni |
 | Hooki | 0 | niepotrzebne |
 | MCP | 0 | nie łączy się z niczym na zewnątrz |
 
-## Kiedy się uruchamia
+## Jak go wyzwolić
+
+Ręcznie:
+
+```
+/czlowiek:humanizuj <tekst albo ścieżka do pliku>
+```
+
+Bez argumentu komenda bierze ostatni tekst z rozmowy. Skill odpala się też
+sam — patrz niżej.
+
+## Kiedy się uruchamia sam
 
 Sam, kiedy w rozmowie padnie „humanizuj", „przepisz to po ludzku", „brzmi jak AI", „sprawdź pod kątem AI", „napisz to moim głosem", „popraw styl", albo kiedy wklejasz tekst i prosisz o redakcję stylistyczną. Odpala się też przy pisaniu nowych polskich tekstów (posty, artykuły, newslettery, eseje), bo domyślny styl modelu wpada w te wzorce sam z siebie.
 
@@ -27,7 +39,7 @@ Głos docelowy nie dotyczy tekstów użytkowych. UX copy, komunikaty błędów i
 
 ## Jak to zmieniać
 
-Katalog wzorców i opis głosu siedzą w `skills/czlowiek/SKILL.md`. Sekcja „Głos docelowy" to miejsce do edycji, jeśli głos się przesunie. Katalog wzorców rozbudowuj przez dopisywanie punktów z konkretnym cytatem, bo abstrakcyjne zasady bez przykładu działają słabo.
+Katalog wzorców i opis głosu siedzą w `skills/czlowiek/SKILL.md`; komenda w `commands/humanizuj.md` tylko go woła, więc zmiany zachowania robisz w skillu. Sekcja „Głos docelowy" to miejsce do edycji, jeśli głos się przesunie. Katalog wzorców rozbudowuj przez dopisywanie punktów z konkretnym cytatem, bo abstrakcyjne zasady bez przykładu działają słabo.
 
 ## Instalacja
 
