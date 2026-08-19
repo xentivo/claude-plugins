@@ -4,6 +4,27 @@ Trwałe ustalenia architektoniczne i świadome kompromisy. Najnowsze na górze. 
 
 ---
 
+## 2026-08-19 — Marketplace `xvo-plugins`, jeden katalog na plugin
+
+**Decyzja:** Marketplace w `.claude-plugin/marketplace.json` nazywa się
+`xvo-plugins` (wcześniej `claude-memory`). Każdy plugin ma własny katalog
+w `plugins/<nazwa>/` z manifestem `.claude-plugin/plugin.json` i wpisem
+w `marketplace.json`. Drugim pluginem jest `czlowiek` (redakcja polskich
+tekstów, autorka Izabella Pyrkosz, MIT — LICENSE zostaje przy pluginie).
+
+**Dlaczego:** Nazwa marketplace = nazwa jednego z pluginów myliła przy
+instalacji drugiego (`czlowiek@claude-memory`). Katalog `.claude-plugin/`
+jest zarezerwowany — Claude Code czyta z niego wyłącznie `marketplace.json`,
+więc wrzucenie tam całego pluginu (co się zdarzyło przy uploadzie z GitHub UI)
+sprawia, że plugin jest niewidoczny.
+
+**Konsekwencje:** Instalacja to `/plugin install <plugin>@xvo-plugins`. Zmiana
+nazwy nie jest wstecznie zgodna — istniejące kopie trzeba usunąć i dodać
+ponownie. Nazwy pluginów bez zmian, więc prefiksy komend
+(`/claude-memory:*`, `/czlowiek:*`) zostają.
+
+---
+
 ## 2026-05-18 — Dystrybucja jako plugin claude-memory (repo = marketplace)
 
 **Decyzja:** Skille spakowano w jeden plugin Claude Code `claude-memory`

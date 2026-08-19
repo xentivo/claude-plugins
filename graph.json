@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-19T09:18:22Z",
+  "generated": "2026-08-19T09:20:10Z",
   "root": ".",
   "stats": {
-    "files_scanned": 24,
-    "nodes": 24,
+    "files_scanned": 25,
+    "nodes": 25,
     "edges": 5
   },
   "nodes": [
@@ -35,7 +35,7 @@
     {
       "id": "docs/claude-memory/decisions.md",
       "type": "markdown",
-      "size": 5054
+      "size": 6115
     },
     {
       "id": "docs/claude-memory/sessions/2026-05-18-add-code-memory-system.md",
@@ -61,6 +61,11 @@
       "id": "docs/claude-memory/sessions/2026-05-18-portable-skills.md",
       "type": "markdown",
       "size": 1490
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-08-19-naprawa-pluginu-czlowiek.md",
+      "type": "markdown",
+      "size": 2126
     },
     {
       "id": "docs/claude-memory/sessions/_TEMPLATE.md",
