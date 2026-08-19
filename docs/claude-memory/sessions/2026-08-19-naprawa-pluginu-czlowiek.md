@@ -49,6 +49,22 @@
   `disable-model-invocation: true`, żeby nie dublować automatycznego
   wyzwalania skilla. Wersja pluginu 1.0.0 → 1.1.0.
 
+## Runda 3 (dokumentacja)
+
+- `CLAUDE.md`: sekcja dystrybucji przepisana pod dwa pluginy; komendy pamięci
+  podane jako `/claude-memory:*` zamiast gołych `/resume`, `/save`, `/graph`
+  (gołe działają tylko przy braku kolizji nazw); dopisana konwencja układu
+  pluginu, autowykrywane katalogi i zakaz wrzucania pluginu do `.claude-plugin/`.
+- `README.md`: tabela pluginów z wersjami i komendami, instrukcja migracji po
+  zmianie nazwy marketplace, opis autowykrywania `skills/` i `commands/`.
+- `docs/claude-memory/README.md`: nazwa marketplace, migracja, wzmianka o drugim
+  pluginie.
+- `plugins/claude-memory/skills/save/assets/README.md` — szablon wysyłany do
+  cudzych projektów miał `claude-memory@claude-memory`; poprawione na
+  `@xvo-plugins`. Za to podbita wersja pluginu na 1.0.1.
+- `decisions.md`: nowy wpis o cienkiej komendzie, stary wpis z 2026-05-18
+  oznaczony jako częściowo nieaktualny (nazwa marketplace).
+
 ## TODO / następny krok
 
 - Po merge'u użytkownicy z dodanym starym marketplace muszą zrobić

@@ -1,14 +1,15 @@
 # claude-plugins
 
-Marketplace pluginów [Claude Code](https://code.claude.com/) od **Xentivo sp. z o.o.**
-Bez zewnętrznych zależności, zero kosztów API poza samym Claude.
+Marketplace `xvo-plugins` — pluginy [Claude Code](https://code.claude.com/)
+od **Xentivo sp. z o.o.** Bez zewnętrznych zależności, zero kosztów API poza
+samym Claude.
 
 **Repozytorium:** https://github.com/xentivo/claude-plugins
 
-| Plugin | Do czego | Opis |
-| --- | --- | --- |
-| **claude-memory** | trwała pamięć między sesjami i mapa repo | niżej |
-| **czlowiek** | redakcja polskich tekstów, usuwanie AI-owych wzorców | [`plugins/czlowiek/README.md`](plugins/czlowiek/README.md) |
+| Plugin | Wersja | Komendy | Do czego |
+| --- | --- | --- | --- |
+| **claude-memory** | 1.0.1 | `/claude-memory:resume` `:save` `:graph` | Trwała pamięć między sesjami i mapa repo |
+| **czlowiek** | 1.1.0 | `/czlowiek:humanizuj` `/czlowiek:czlowiek` | Redakcja polskich tekstów, usuwanie AI-owych wzorców |
 
 ## Instalacja
 
@@ -24,6 +25,15 @@ Aktualizacja po zmianach w tym repo:
 
 ```
 /plugin marketplace update
+```
+
+Marketplace nazywał się wcześniej `claude-memory`. Jeżeli masz go dodanego pod
+starą nazwą, `/plugin marketplace update` nie wystarczy — usuń go i dodaj
+ponownie:
+
+```
+/plugin marketplace remove claude-memory
+/plugin marketplace add xentivo/claude-plugins
 ```
 
 ---
@@ -53,7 +63,8 @@ Pamięć (`docs/claude-memory/`) jest **per projekt**. Przy pierwszym `/save` pl
 tworzy katalog i szablony z wbudowanych assetów.
 
 Opcjonalnie wklej sekcję „Pamięć Claude” z [`CLAUDE.md`](CLAUDE.md) do
-`~/.claude/CLAUDE.md`, żeby agent pamiętał o `/resume` i `/save` globalnie.
+`~/.claude/CLAUDE.md`, żeby agent pamiętał o `/claude-memory:resume`
+i `/claude-memory:save` globalnie.
 
 ## Typowy workflow
 
@@ -121,8 +132,19 @@ Dodając kolejny plugin, zakładasz katalog w `plugins/` i dopisujesz wpis w
 `marketplace.json`. Po każdej zmianie pluginu podbij jego `version` — po tym polu
 rozpoznawana jest dostępność aktualizacji.
 
-Skille używają `${CLAUDE_SKILL_DIR}` — działają jako plugin, instalacja
-projektowa i globalna.
+Wewnątrz pluginu komponenty są autowykrywane: `skills/` (podkatalog z `SKILL.md`),
+`commands/` (płaskie pliki `.md`), `agents/`, `hooks/hooks.json`. Nazwa komendy
+z `commands/` bierze się z nazwy pliku, nazwa skilla z pola `name` we frontmatterze.
+
+**Plugin nie idzie do `.claude-plugin/`.** Ten katalog jest zarezerwowany —
+Claude Code czyta z niego wyłącznie `marketplace.json`, a wszystko inne ignoruje.
+Plugin wrzucony tam jest niewidoczny; miejsce na plugin to `plugins/<nazwa>/`.
+Uwaga też na „Add files via upload" w GitHub UI: gubi zagnieżdżone katalogi
+zaczynające się od kropki, więc `plugin.json` potrafi nie dojechać.
+
+Skille lokalizują swoje zasoby przez `${CLAUDE_SKILL_DIR}`, a pliki pluginu
+przez `${CLAUDE_PLUGIN_ROOT}` — działa jako plugin, instalacja projektowa
+i globalna.
 
 ## Wymagania
 

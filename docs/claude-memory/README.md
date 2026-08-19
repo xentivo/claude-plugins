@@ -12,9 +12,9 @@ Trwała, oparta o pliki pamięć dla Claude Code — żeby nie tracić kontekstu
 
 ## Skille
 
-Logika pamięci żyje jako Skille Anthropic spakowane w plugin `claude-memory`
-(`plugins/claude-memory/skills/`); to repo jest też marketplace. Po instalacji
-komendy są namespace'owane prefiksem `claude-memory:`:
+Logika pamięci żyje jako Skille spakowane w plugin `claude-memory`
+(`plugins/claude-memory/skills/`); to repo jest też marketplace `xvo-plugins`.
+Po instalacji komendy są namespace'owane prefiksem `claude-memory:`:
 
 - `resume` (`/claude-memory:resume`) — na początku sesji: Claude czyta `decisions.md` i kilka ostatnich logów z `sessions/`, zanim cokolwiek zrobi.
 - `save` (`/claude-memory:save`) — na końcu sesji: Claude zapisuje nowy log sesji (z odnośnikami do dotkniętych plików) i w razie potrzeby dopisuje wpis do `decisions.md`. Przyjmuje opcjonalny argument: krótki slug opisu sesji. Odświeża też `graph.json`.
@@ -22,7 +22,11 @@ komendy są namespace'owane prefiksem `claude-memory:`:
 
 Instalacja w innym projekcie: `/plugin marketplace add xentivo/claude-plugins` → `/plugin install claude-memory@xvo-plugins`.
 
-Repozytorium: https://github.com/xentivo/claude-plugins
+Marketplace nazywał się wcześniej `claude-memory`; jeżeli masz go dodanego pod
+starą nazwą, usuń go (`/plugin marketplace remove claude-memory`) i dodaj ponownie.
+
+Repozytorium: https://github.com/xentivo/claude-plugins — obok pamięci mieszka
+tam drugi plugin, `czlowiek` (redakcja polskich tekstów).
 
 ## Zasady wpisów
 

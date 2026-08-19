@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-19T09:26:49Z",
+  "generated": "2026-08-19T09:36:01Z",
   "root": ".",
   "stats": {
     "files_scanned": 26,
@@ -15,7 +15,7 @@
     {
       "id": "CLAUDE.md",
       "type": "markdown",
-      "size": 2215
+      "size": 2851
     },
     {
       "id": "LICENSE",
@@ -25,17 +25,17 @@
     {
       "id": "README.md",
       "type": "markdown",
-      "size": 4515
+      "size": 5594
     },
     {
       "id": "docs/claude-memory/README.md",
       "type": "markdown",
-      "size": 2035
+      "size": 2295
     },
     {
       "id": "docs/claude-memory/decisions.md",
       "type": "markdown",
-      "size": 6115
+      "size": 7237
     },
     {
       "id": "docs/claude-memory/sessions/2026-05-18-add-code-memory-system.md",
@@ -65,7 +65,7 @@
     {
       "id": "docs/claude-memory/sessions/2026-08-19-naprawa-pluginu-czlowiek.md",
       "type": "markdown",
-      "size": 3225
+      "size": 4162
     },
     {
       "id": "docs/claude-memory/sessions/_TEMPLATE.md",
@@ -75,7 +75,7 @@
     {
       "id": "plugins/claude-memory/.claude-plugin/plugin.json",
       "type": "other",
-      "size": 220
+      "size": 221
     },
     {
       "id": "plugins/claude-memory/skills/graph/SKILL.md",
@@ -111,7 +111,7 @@
     {
       "id": "plugins/claude-memory/skills/save/assets/README.md",
       "type": "markdown",
-      "size": 1508
+      "size": 1496
     },
     {
       "id": "plugins/claude-memory/skills/save/assets/_TEMPLATE.md",
@@ -136,7 +136,7 @@
     {
       "id": "plugins/czlowiek/README.md",
       "type": "markdown",
-      "size": 2425
+      "size": 2537
     },
     {
       "id": "plugins/czlowiek/commands/humanizuj.md",

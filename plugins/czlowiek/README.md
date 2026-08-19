@@ -20,8 +20,9 @@ Ręcznie:
 /czlowiek:humanizuj <tekst albo ścieżka do pliku>
 ```
 
-Bez argumentu komenda bierze ostatni tekst z rozmowy. Skill odpala się też
-sam — patrz niżej.
+Bez argumentu komenda bierze ostatni tekst z rozmowy. Komenda sama się nie
+odpala (`disable-model-invocation: true`), żeby nie dublować automatycznego
+wyzwalania skilla — ten odpala się sam, patrz niżej.
 
 ## Kiedy się uruchamia sam
 

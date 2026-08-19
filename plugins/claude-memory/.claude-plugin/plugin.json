@@ -1,7 +1,7 @@
 {
   "name": "claude-memory",
   "description": "Claude memory - zaoszczędź tokeny",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Xentivo sp. z o.o."
   },
