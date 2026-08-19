@@ -8,7 +8,7 @@ samym Claude.
 
 | Plugin | Wersja | Komendy | Do czego |
 | --- | --- | --- | --- |
-| **claude-memory** | 1.0.1 | `/claude-memory:resume` `:save` `:graph` | Trwała pamięć między sesjami i mapa repo |
+| **claude-memory** | 1.0.2 | `/claude-memory:resume` `:save` `:graph` | Trwała pamięć między sesjami i mapa repo |
 | **czlowiek** | 1.1.0 | `/czlowiek:humanizuj` `/czlowiek:czlowiek` | Redakcja polskich tekstów, usuwanie AI-owych wzorców |
 
 ## Instalacja
@@ -40,53 +40,21 @@ ponownie:
 
 # claude-memory
 
-Trwała, plikowa pamięć między sesjami i strukturalna mapa repozytorium.
-
-## Po co
-
-- **Mniej tokenów** — agent nie skanuje od zera tego samego kodu w każdej sesji.
-- **Brak amnezji** — decyzje architektoniczne i logi sesji żyją w plikach w repo.
-- **Mapa kodu** — `graph.json` (linki Markdown, importy) zamiast ślepego czytania
-  wielu plików naraz.
-
-## Skille
-
-Po instalacji komendy mają prefiks `claude-memory:`:
+Trwała, plikowa pamięć między sesjami i strukturalna mapa repozytorium — agent
+nie skanuje w kółko tego samego kodu i nie zapomina, dlaczego coś wygląda tak,
+a nie inaczej.
 
 | Skill | Komenda | Kiedy |
 | --- | --- | --- |
 | **resume** | `/claude-memory:resume` | Na początku sesji — odtwarza kontekst z `decisions.md` i ostatnich logów |
-| **save** | `/claude-memory:save` | Na końcu sesji — zapisuje log, ewentualną decyzję, odświeża `graph.json` |
+| **save** | `/claude-memory:save` [slug] | Na końcu sesji — zapisuje log, ewentualną decyzję, odświeża `graph.json` |
 | **graph** | `/claude-memory:graph` | Przed czytaniem wielu plików — buduje lub odpytuje mapę strukturalną repo |
 
-Pamięć (`docs/claude-memory/`) jest **per projekt**. Przy pierwszym `/save` plugin
-tworzy katalog i szablony z wbudowanych assetów.
+Pamięć (`docs/claude-memory/`) jest per projekt; przy pierwszym `save` plugin
+zakłada ją z wbudowanych szablonów.
 
-Opcjonalnie wklej sekcję „Pamięć Claude” z [`CLAUDE.md`](CLAUDE.md) do
-`~/.claude/CLAUDE.md`, żeby agent pamiętał o `/claude-memory:resume`
-i `/claude-memory:save` globalnie.
-
-## Typowy workflow
-
-1. **`/claude-memory:resume`** — na start sesji.
-2. Praca nad kodem (w razie potrzeby **`/claude-memory:graph`**).
-3. **`/claude-memory:save`** [opcjonalny-slug] — na koniec sesji.
-
-## Pamięć w projekcie
-
-Po pierwszym zapisie powstaje:
-
-```
-docs/claude-memory/
-├── README.md          # zasady systemu pamięci
-├── decisions.md       # trwałe decyzje („dlaczego tak”)
-└── sessions/          # logi sesji (YYYY-MM-DD-opis.md)
-```
-
-W korzeniu projektu: **`graph.json`** — generowany lokalnie przez Python (stdlib)
-wbudowany w skill `graph`.
-
-Szczegóły: [`docs/claude-memory/README.md`](docs/claude-memory/README.md).
+Pełny opis: [`plugins/claude-memory/README.md`](plugins/claude-memory/README.md).
+Autor: Xentivo sp. z o.o., licencja MIT ([`LICENSE`](LICENSE)).
 
 ---
 
@@ -114,6 +82,7 @@ To repozytorium jest jednocześnie **marketplace** i źródłem pluginów:
 plugins/
 ├── claude-memory/
 │   ├── .claude-plugin/plugin.json
+│   ├── README.md
 │   └── skills/
 │       ├── resume/
 │       ├── save/                 # szablony pamięci w assets/
@@ -121,6 +90,8 @@ plugins/
 │           └── generate_graph.py # generator graph.json (stdlib)
 └── czlowiek/
     ├── .claude-plugin/plugin.json
+    ├── README.md
+    ├── LICENSE                   # inna autorka niż reszta repo
     ├── commands/humanizuj.md     # ręczne wyzwolenie skilla
     └── skills/
         └── czlowiek/SKILL.md
@@ -146,7 +117,5 @@ Skille lokalizują swoje zasoby przez `${CLAUDE_SKILL_DIR}`, a pliki pluginu
 przez `${CLAUDE_PLUGIN_ROOT}` — działa jako plugin, instalacja projektowa
 i globalna.
 
-## Wymagania
-
-- [Claude Code](https://code.claude.com/) z obsługą pluginów i skilli
-- Python 3 (tylko do generatora `graph.json`; biblioteka standardowa)
+Szczegóły każdego pluginu — instalacja, wymagania, jak go zmieniać — siedzą
+w jego własnym `README.md`.

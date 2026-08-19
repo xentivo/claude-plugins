@@ -65,6 +65,16 @@
 - `decisions.md`: nowy wpis o cienkiej komendzie, stary wpis z 2026-05-18
   oznaczony jako częściowo nieaktualny (nazwa marketplace).
 
+## Runda 4 (README per plugin)
+
+- Opis `claude-memory` przeniesiony z korzeniowego `README.md` do nowego
+  `plugins/claude-memory/README.md` — symetrycznie do `czlowieka`. Korzeń
+  został na poziomie marketplace: tabela pluginów, instalacja, migracja,
+  struktura repo i po krótkiej sekcji na plugin z linkiem do jego README.
+- Linki z README pluginu na zewnątrz katalogu (`CLAUDE.md`, `LICENSE`) jako
+  pełne URL-e, bo w zainstalowanej kopii nie ma nad nią korzenia repo.
+- Wersja `claude-memory` 1.0.1 → 1.0.2.
+
 ## TODO / następny krok
 
 - Po merge'u użytkownicy z dodanym starym marketplace muszą zrobić

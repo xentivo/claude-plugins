@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-19T09:36:01Z",
+  "generated": "2026-08-19T09:46:08Z",
   "root": ".",
   "stats": {
-    "files_scanned": 26,
-    "nodes": 26,
+    "files_scanned": 27,
+    "nodes": 27,
     "edges": 5
   },
   "nodes": [
@@ -25,7 +25,7 @@
     {
       "id": "README.md",
       "type": "markdown",
-      "size": 5594
+      "size": 4709
     },
     {
       "id": "docs/claude-memory/README.md",
@@ -65,7 +65,7 @@
     {
       "id": "docs/claude-memory/sessions/2026-08-19-naprawa-pluginu-czlowiek.md",
       "type": "markdown",
-      "size": 4162
+      "size": 4687
     },
     {
       "id": "docs/claude-memory/sessions/_TEMPLATE.md",
@@ -76,6 +76,11 @@
       "id": "plugins/claude-memory/.claude-plugin/plugin.json",
       "type": "other",
       "size": 221
+    },
+    {
+      "id": "plugins/claude-memory/README.md",
+      "type": "markdown",
+      "size": 3486
     },
     {
       "id": "plugins/claude-memory/skills/graph/SKILL.md",
@@ -152,12 +157,12 @@
   "edges": [
     {
       "from": "README.md",
-      "to": "CLAUDE.md",
+      "to": "LICENSE",
       "kind": "link"
     },
     {
       "from": "README.md",
-      "to": "docs/claude-memory/README.md",
+      "to": "plugins/claude-memory/README.md",
       "kind": "link"
     },
     {
