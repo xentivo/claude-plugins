@@ -14,7 +14,7 @@ między sesjami i nie re-czytać w kółko tych samych plików.
 
 ## Skille
 
-Logika pamięci żyje jako Skille Anthropic spakowane w plugin `claude-memory`
+Logika pamięci żyje jako Skille spakowane w plugin `claude-memory`
 (komendy namespace'owane prefiksem `claude-memory:`):
 
 - `/claude-memory:resume` — na początku sesji odtwarza kontekst.
@@ -22,7 +22,7 @@ Logika pamięci żyje jako Skille Anthropic spakowane w plugin `claude-memory`
 - `/claude-memory:graph` — buduje/odpytuje strukturalną mapę repo `graph.json`.
 
 Instalacja: `/plugin marketplace add xentivo/claude-plugins` →
-`/plugin install claude-memory@claude-memory`.
+`/plugin install claude-memory@xvo-plugins`.
 
 Repozytorium: https://github.com/xentivo/claude-plugins
 

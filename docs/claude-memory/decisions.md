@@ -4,6 +4,25 @@ Trwałe ustalenia architektoniczne i świadome kompromisy. Najnowsze na górze. 
 
 ---
 
+## 2026-08-19 — Komenda w pluginie jest cienka, logika siedzi w skillu
+
+**Decyzja:** `czlowiek` dostał komendę `commands/humanizuj.md`
+(`/czlowiek:humanizuj [tekst|plik]`), która tylko czyta
+`${CLAUDE_PLUGIN_ROOT}/skills/czlowiek/SKILL.md` i stosuje opisany tam proces.
+Ma `disable-model-invocation: true` i `allowed-tools: Read`. Ta sama zasada
+obowiązuje przy kolejnych komendach: treść merytoryczna tylko w skillu.
+
+**Dlaczego:** Skill wyzwala się sam po opisie, ale nie da się go wprost
+wycelować w konkretny plik — komenda daje ręczne wejście z argumentem.
+Skopiowanie katalogu wzorców do komendy dałoby dwa źródła prawdy, które
+rozjadą się przy pierwszej edycji.
+
+**Konsekwencje:** `disable-model-invocation` na komendzie, żeby model nie
+wyzwalał jej równolegle ze skillem. Zmiany zachowania robi się wyłącznie
+w `SKILL.md`; komendy nie trzeba wtedy ruszać.
+
+---
+
 ## 2026-08-19 — Marketplace `xvo-plugins`, jeden katalog na plugin
 
 **Decyzja:** Marketplace w `.claude-plugin/marketplace.json` nazywa się
@@ -34,6 +53,10 @@ ponownie. Nazwy pluginów bez zmian, więc prefiksy komend
 plugin jest jedynym źródłem (wybór użytkownika: „tylko plugin"). Lokalizacja
 zasobów przez `${CLAUDE_SKILL_DIR}` zamiast detekcji projekt/global.
 Autor: Xentivo sp. z o.o. Opis: „Claude memory - zaoszczędź tokeny".
+
+**Nieaktualne od 2026-08-19:** marketplace nazywa się `xvo-plugins`, nie
+`claude-memory`, i trzyma dwa pluginy — patrz wpis „Marketplace `xvo-plugins`,
+jeden katalog na plugin" wyżej. Reszta tego wpisu obowiązuje.
 
 **Dlaczego:** Reużycie w innych projektach jedną komendą (`/plugin install`)
 zamiast ręcznego kopiowania; wersjonowanie przez marketplace.
