@@ -1,0 +1,9 @@
+{
+  "name": "czlowiek",
+  "description": "Człowiek - redakcja polskich tekstów: usuwa AI-owe wzorce i doprowadza tekst do ustalonego głosu autorki",
+  "version": "1.0.0",
+  "author": {
+    "name": "Izabella Pyrkosz"
+  },
+  "repository": "https://github.com/xentivo/claude-plugins"
+}
