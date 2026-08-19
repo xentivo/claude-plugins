@@ -28,3 +28,18 @@ Głos docelowy nie dotyczy tekstów użytkowych. UX copy, komunikaty błędów i
 ## Jak to zmieniać
 
 Katalog wzorców i opis głosu siedzą w `skills/czlowiek/SKILL.md`. Sekcja „Głos docelowy" to miejsce do edycji, jeśli głos się przesunie. Katalog wzorców rozbudowuj przez dopisywanie punktów z konkretnym cytatem, bo abstrakcyjne zasady bez przykładu działają słabo.
+
+## Instalacja
+
+```
+/plugin marketplace add xentivo/claude-plugins
+/plugin install czlowiek@xvo-plugins
+```
+
+Aktualizacja po zmianach w tym repo: `/plugin marketplace update`. Po każdej
+zmianie skilla podbij `version` w `.claude-plugin/plugin.json` — po tym polu
+rozpoznawana jest dostępność aktualizacji.
+
+## Licencja
+
+MIT, plik [LICENSE](LICENSE) — © 2026 Izabella Pyrkosz.

@@ -1,6 +1,6 @@
 {
-  "name": "claude-memory",
-  "description": "Marketplace pluginów Claude memory (Xentivo)",
+  "name": "xvo-plugins",
+  "description": "Marketplace pluginów Claude Code (Xentivo)",
   "owner": {
     "name": "Xentivo sp. z o.o."
   },
@@ -9,6 +9,11 @@
       "name": "claude-memory",
       "description": "Claude memory - zaoszczędź dużo tokenów",
       "source": "./plugins/claude-memory"
+    },
+    {
+      "name": "czlowiek",
+      "description": "Człowiek - redakcja polskich tekstów: usuwa AI-owe wzorce i doprowadza tekst do ustalonego głosu autorki",
+      "source": "./plugins/czlowiek"
     }
   ]
 }
