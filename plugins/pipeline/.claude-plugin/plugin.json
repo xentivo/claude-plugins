@@ -1,0 +1,9 @@
+{
+  "name": "pipeline",
+  "description": "Pipeline CI/CD - narzędzia do stosowania zasady ci-pipeline organizacji Xentivo w dowolnym repozytorium",
+  "version": "1.0.0",
+  "author": {
+    "name": "Xentivo sp. z o.o."
+  },
+  "repository": "https://github.com/xentivo/claude-plugins"
+}

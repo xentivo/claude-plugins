@@ -14,6 +14,11 @@
       "name": "czlowiek",
       "description": "Człowiek - redakcja polskich tekstów: usuwa AI-owe wzorce i doprowadza tekst do ustalonego głosu autorki",
       "source": "./plugins/czlowiek"
+    },
+    {
+      "name": "pipeline",
+      "description": "Pipeline CI/CD - narzędzia do stosowania zasady ci-pipeline organizacji Xentivo w dowolnym repozytorium",
+      "source": "./plugins/pipeline"
     }
   ]
 }
