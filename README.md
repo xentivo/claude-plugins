@@ -10,6 +10,7 @@ samym Claude.
 | --- | --- | --- | --- |
 | **claude-memory** | 1.0.2 | `/claude-memory:resume` `:save` `:graph` | Trwała pamięć między sesjami i mapa repo |
 | **czlowiek** | 1.1.0 | `/czlowiek:humanizuj` `/czlowiek:czlowiek` | Redakcja polskich tekstów, usuwanie AI-owych wzorców |
+| **pipeline** | 1.0.0 | `/pipeline:xvo-zbuduj-pipeline` | Budowanie pipeline'ów CI/CD zgodnie z zasadą `ci-pipeline` |
 
 ## Instalacja
 
@@ -19,6 +20,7 @@ W dowolnym projekcie z Claude Code:
 /plugin marketplace add xentivo/claude-plugins
 /plugin install claude-memory@xvo-plugins
 /plugin install czlowiek@xvo-plugins
+/plugin install pipeline@xvo-plugins
 ```
 
 Aktualizacja po zmianach w tym repo:
@@ -73,6 +75,27 @@ Autorka: Izabella Pyrkosz, licencja MIT ([`plugins/czlowiek/LICENSE`](plugins/cz
 
 ---
 
+# pipeline
+
+Budowanie i poprawianie pipeline'ów CI/CD zgodnie z zasadą `ci-pipeline` organizacji.
+
+| Co | Komenda | Kiedy |
+| --- | --- | --- |
+| **komenda** `xvo-zbuduj-pipeline` | `/pipeline:xvo-zbuduj-pipeline [zakres]` | Gdy stawiasz pipeline w repo albo uzupełniasz brakujący obszar |
+| **skill** `bramka-pr` | odpala się sam | Przy edycji workflowów uruchamianych na `pull_request` |
+| **skill** `deploy` | odpala się sam | Gdy workflow buduje obraz, wdraża rewizję albo robi rollback |
+| **skill** `sekrety` | odpala się sam | Gdy workflow dotyka sekretów, tokenów, `permissions`, OIDC albo obcych akcji |
+
+Treść normatywna nie jest tutaj: reguły żyją w `content/ci-pipeline.md`
+w [`xentivo/mcp-org-rules`](https://github.com/xentivo/mcp-org-rules) i idą przez MCP,
+a skille dociągają je przez `get_rule`. **Bez dostępu do serwera Xentivo MCP plugin
+jest połowiczny** - procedura poprowadzi przez kroki, uzasadnienia zostaną poza
+zasięgiem.
+
+Pełny opis: [`plugins/pipeline/README.md`](plugins/pipeline/README.md).
+
+---
+
 ## Struktura tego repo
 
 To repozytorium jest jednocześnie **marketplace** i źródłem pluginów:
@@ -88,13 +111,21 @@ plugins/
 │       ├── save/                 # szablony pamięci w assets/
 │       └── graph/
 │           └── generate_graph.py # generator graph.json (stdlib)
-└── czlowiek/
+├── czlowiek/
+│   ├── .claude-plugin/plugin.json
+│   ├── README.md
+│   ├── LICENSE                   # inna autorka niż reszta repo
+│   ├── commands/humanizuj.md     # ręczne wyzwolenie skilla
+│   └── skills/
+│       └── czlowiek/SKILL.md
+└── pipeline/
     ├── .claude-plugin/plugin.json
     ├── README.md
-    ├── LICENSE                   # inna autorka niż reszta repo
-    ├── commands/humanizuj.md     # ręczne wyzwolenie skilla
+    ├── commands/xvo-zbuduj-pipeline.md
     └── skills/
-        └── czlowiek/SKILL.md
+        ├── bramka-pr/SKILL.md
+        ├── deploy/SKILL.md
+        └── sekrety/SKILL.md
 ```
 
 Dwa poziomy manifestów to nie pomyłka. `marketplace.json` w korzeniu mówi, jakie
