@@ -11,6 +11,7 @@ samym Claude.
 | **claude-memory** | 1.0.2 | `/claude-memory:resume` `:save` `:graph` | Trwała pamięć między sesjami i mapa repo |
 | **czlowiek** | 1.1.0 | `/czlowiek:humanizuj` `/czlowiek:czlowiek` | Redakcja polskich tekstów, usuwanie AI-owych wzorców |
 | **pipeline** | 1.0.0 | `/pipeline:xvo-zbuduj-pipeline` | Budowanie pipeline'ów CI/CD zgodnie z zasadą `ci-pipeline` |
+| **wydanie** | 1.0.0 | `/wydanie:xvo-wydaj` | Wydania: release z pnia z wersją z pliku wersjonującego repo |
 
 ## Instalacja
 
@@ -21,6 +22,7 @@ W dowolnym projekcie z Claude Code:
 /plugin install claude-memory@xvo-plugins
 /plugin install czlowiek@xvo-plugins
 /plugin install pipeline@xvo-plugins
+/plugin install wydanie@xvo-plugins
 ```
 
 Aktualizacja po zmianach w tym repo:
@@ -96,6 +98,29 @@ Pełny opis: [`plugins/pipeline/README.md`](plugins/pipeline/README.md).
 
 ---
 
+# wydanie
+
+Tworzenie wydań zgodnie z zasadą `versioning` organizacji: release z pnia, tag równy
+wersji z pliku wersjonującego repo.
+
+| Co | Komenda | Kiedy |
+| --- | --- | --- |
+| **komenda** `xvo-wydaj` | `/wydanie:xvo-wydaj [rc\|sprawdź]` | Gdy wydajesz wersję albo chcesz wiedzieć, czy można |
+| **skill** `wersja` | odpala się sam | Przy odczycie i podbijaniu numeru wersji |
+| **skill** `wydanie` | odpala się sam | Przy tworzeniu release'a, tagowaniu i wycofywaniu |
+
+Sedno: jeśli deploy na produkcję startuje z `release: published`, **kliknięcie
+„Publish" jest deployem**. Dlatego plugin tworzy draft, sprawdza migracje i czeka na
+wyraźne „publikuj", a wersję czyta z pnia, nie z lokalnego drzewa.
+
+Treść normatywna nie jest tutaj: reguły żyją w `content/versioning.md`
+w [`xentivo/mcp-org-rules`](https://github.com/xentivo/mcp-org-rules) i idą przez MCP,
+a skille dociągają je przez `get_rule`.
+
+Pełny opis: [`plugins/wydanie/README.md`](plugins/wydanie/README.md).
+
+---
+
 ## Struktura tego repo
 
 To repozytorium jest jednocześnie **marketplace** i źródłem pluginów:
@@ -118,14 +143,21 @@ plugins/
 │   ├── commands/humanizuj.md     # ręczne wyzwolenie skilla
 │   └── skills/
 │       └── czlowiek/SKILL.md
-└── pipeline/
+├── pipeline/
+│   ├── .claude-plugin/plugin.json
+│   ├── README.md
+│   ├── commands/xvo-zbuduj-pipeline.md
+│   └── skills/
+│       ├── bramka-pr/SKILL.md
+│       ├── deploy/SKILL.md
+│       └── sekrety/SKILL.md
+└── wydanie/
     ├── .claude-plugin/plugin.json
     ├── README.md
-    ├── commands/xvo-zbuduj-pipeline.md
+    ├── commands/xvo-wydaj.md
     └── skills/
-        ├── bramka-pr/SKILL.md
-        ├── deploy/SKILL.md
-        └── sekrety/SKILL.md
+        ├── wersja/SKILL.md
+        └── wydanie/SKILL.md
 ```
 
 Dwa poziomy manifestów to nie pomyłka. `marketplace.json` w korzeniu mówi, jakie

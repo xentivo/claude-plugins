@@ -14,7 +14,7 @@ logi sesji).
 ## Dystrybucja: marketplace `xvo-plugins`
 
 To repo jest marketplace `xvo-plugins` (`.claude-plugin/marketplace.json`
-w korzeniu) i źródłem trzech pluginów:
+w korzeniu) i źródłem czterech pluginów:
 
 - `plugins/claude-memory/` — skille `resume`, `save`, `graph`; generator
   `graph.json` i szablony pamięci wbudowane obok `SKILL.md`.
@@ -26,6 +26,11 @@ w korzeniu) i źródłem trzech pluginów:
   żyją w `content/ci-pipeline.md` w `xentivo/mcp-org-rules` i idą przez MCP,
   a skille dociągają je przez `get_rule`. Kopiowanie reguł do `SKILL.md` dałoby
   drugą wersję prawdy, która rozjedzie się przy pierwszej poprawce zasady.
+- `plugins/wydanie/` - skille `wersja`, `wydanie` plus komenda
+  `commands/xvo-wydaj.md`. Ten sam podział: zasada `versioning` żyje w
+  `content/versioning.md` w `mcp-org-rules`. Sedno pluginu: gdy deploy na produkcję
+  startuje z `release: published`, publikacja release'a JEST deployem, więc plugin
+  tworzy draft i czeka na wyraźne „publikuj".
 
 Konwencja: każdy plugin ma własny katalog w `plugins/<nazwa>/` z manifestem
 `.claude-plugin/plugin.json` i wpis w `marketplace.json`. Komponenty są
@@ -46,13 +51,14 @@ Instalacja w dowolnym projekcie:
 /plugin install claude-memory@xvo-plugins
 /plugin install czlowiek@xvo-plugins
 /plugin install pipeline@xvo-plugins
+/plugin install wydanie@xvo-plugins
 ```
 
 Repozytorium: https://github.com/xentivo/claude-plugins
 
 Komendy są namespace'owane nazwą pluginu: `/claude-memory:resume`,
 `/claude-memory:save`, `/claude-memory:graph`, `/czlowiek:humanizuj`,
-`/czlowiek:czlowiek`, `/pipeline:xvo-zbuduj-pipeline`. Pamięć (`docs/claude-memory/`) jest per-projekt —
+`/czlowiek:czlowiek`, `/pipeline:xvo-zbuduj-pipeline`, `/wydanie:xvo-wydaj`. Pamięć (`docs/claude-memory/`) jest per-projekt -
 `/claude-memory:save` zakłada ją z wbudowanych szablonów przy pierwszym
 uruchomieniu. Aktualizacja: push do repo + `/plugin marketplace update`;
 po każdej zmianie pluginu podbij jego `version`, bo po tym polu rozpoznawana

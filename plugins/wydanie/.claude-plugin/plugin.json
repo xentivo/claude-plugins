@@ -1,0 +1,9 @@
+{
+  "name": "wydanie",
+  "description": "Wydania - tworzenie release'ów z pnia z wersją z pliku wersjonującego repo, zgodnie z zasadą versioning organizacji Xentivo",
+  "version": "1.0.0",
+  "author": {
+    "name": "Xentivo sp. z o.o."
+  },
+  "repository": "https://github.com/xentivo/claude-plugins"
+}
