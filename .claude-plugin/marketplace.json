@@ -19,6 +19,11 @@
       "name": "pipeline",
       "description": "Pipeline CI/CD - narzędzia do stosowania zasady ci-pipeline organizacji Xentivo w dowolnym repozytorium",
       "source": "./plugins/pipeline"
+    },
+    {
+      "name": "wydanie",
+      "description": "Wydania - tworzenie release'ów z pnia z wersją z pliku wersjonującego repo, zgodnie z zasadą versioning organizacji Xentivo",
+      "source": "./plugins/wydanie"
     }
   ]
 }
