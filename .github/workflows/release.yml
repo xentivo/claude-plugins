@@ -1,0 +1,59 @@
+name: Wydanie (wersje pluginów + changelog)
+
+# Po wejściu PR-a do pnia: podbicie `version` w manifeście każdego pluginu, którego
+# dotknęła zmiana, plus wpisy w CHANGELOG.md. Zasady organizacji: `versioning`
+# i `ci-pipeline` (sekcja „Wydanie po merge'u"). Cała logika siedzi
+# w scripts/release.sh, żeby dała się uruchomić z ręki, gdy bieg padnie.
+#
+# DLACZEGO WERSJA PER PLUGIN: `version` w manifeście jest polem, po którym klient
+# rozpoznaje dostępność aktualizacji. Jeden numer na repo znaczyłby, że zmiana
+# w jednym pluginie zapowiada aktualizację pozostałych.
+#
+# UWAGA NA PĘTLĘ: ten workflow sam pushuje na tę samą gałąź. Chronią przed
+# odpaleniem się w kółko dwie rzeczy naraz, bo każda z osobna zawodzi:
+# `paths-ignore` na plikach, które krok zmienia, i warunek na markerze w treści
+# commita.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "CHANGELOG.md"
+      - "README.md"
+      - "plugins/*/.claude-plugin/plugin.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: ${{ !contains(github.event.head_commit.message, '[wydanie]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sprawdź komplet konfiguracji
+        env:
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          if [ -z "${RELEASE_TOKEN}" ]; then
+            echo "::error::Brak sekretu RELEASE_TOKEN. Ustaw go w Settings > Secrets and variables > Actions: PAT (fine-grained: Contents Read and write, Pull requests Read) albo token GitHub Appa. Token musi mieć bypass w ochronie gałęzi, inaczej push commita wydania odbije się od chronionego pnia."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Zakres liczy się od taga poprzedniego wydania pluginu, a shallow
+          # checkout tagów nie widzi: krok uznałby, że wydania nigdy nie było.
+          fetch-depth: 0
+          # Obca akcja nie dostaje tokena automatu do ręki; push robi skrypt,
+          # podając go wprost, więc token nie zostaje też w .git/config.
+          persist-credentials: false
+
+      - name: Wydanie
+        env:
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: ./scripts/release.sh

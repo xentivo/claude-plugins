@@ -1,10 +1,10 @@
 {
-  "generated": "2026-09-07T09:43:37Z",
+  "generated": "2026-09-07T12:41:27Z",
   "root": ".",
   "stats": {
-    "files_scanned": 35,
-    "nodes": 35,
-    "edges": 6
+    "files_scanned": 39,
+    "nodes": 39,
+    "edges": 8
   },
   "nodes": [
     {
@@ -13,9 +13,19 @@
       "size": 729
     },
     {
+      "id": ".github/workflows/release.yml",
+      "type": "other",
+      "size": 2326
+    },
+    {
+      "id": "CHANGELOG.md",
+      "type": "markdown",
+      "size": 1156
+    },
+    {
       "id": "CLAUDE.md",
       "type": "markdown",
-      "size": 3321
+      "size": 4797
     },
     {
       "id": "LICENSE",
@@ -25,7 +35,7 @@
     {
       "id": "README.md",
       "type": "markdown",
-      "size": 6218
+      "size": 6915
     },
     {
       "id": "docs/claude-memory/README.md",
@@ -35,7 +45,7 @@
     {
       "id": "docs/claude-memory/decisions.md",
       "type": "markdown",
-      "size": 8156
+      "size": 9666
     },
     {
       "id": "docs/claude-memory/sessions/2026-05-18-add-code-memory-system.md",
@@ -71,6 +81,11 @@
       "id": "docs/claude-memory/sessions/2026-08-25-plugin-pipeline.md",
       "type": "markdown",
       "size": 3530
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-09-07-krok-wydania-implementacja.md",
+      "type": "markdown",
+      "size": 2837
     },
     {
       "id": "docs/claude-memory/sessions/2026-09-07-wydanie-po-mergeu.md",
@@ -186,15 +201,30 @@
     {
       "id": "plugins/pipeline/skills/deploy/SKILL.md",
       "type": "markdown",
-      "size": 6249
+      "size": 6682
     },
     {
       "id": "plugins/pipeline/skills/sekrety/SKILL.md",
       "type": "markdown",
       "size": 4623
+    },
+    {
+      "id": "scripts/release.sh",
+      "type": "shell",
+      "size": 11087
     }
   ],
   "edges": [
+    {
+      "from": "README.md",
+      "to": "CHANGELOG.md",
+      "kind": "link"
+    },
+    {
+      "from": "README.md",
+      "to": "CLAUDE.md",
+      "kind": "link"
+    },
     {
       "from": "README.md",
       "to": "LICENSE",

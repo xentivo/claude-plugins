@@ -96,8 +96,14 @@ Kształt kroku:
   kolejnych workflowów, więc obraz z nowym numerem nie powstanie; nieudany push kończy
   job czerwono, bo ciche pominięcie wygląda jak wydanie.
 - `concurrency` po gałęzi z `cancel-in-progress: false`.
-- Poziom podbicia z jawnego sygnału repo (etykieta, konwencja commita), domyślnie
-  `patch`. Brak sygnału nie wywraca wydania.
+- Poziom podbicia z jawnego sygnału: domyślnie `patch`, wyżej z etykiety
+  `breaking` na PR-ze. Mapowanie rozstrzyga `get_rule("versioning")` - przed
+  `1.0.0` zmiana łamiąca kontrakt to MINOR, nie MAJOR. Brak etykiety nie wywraca
+  wydania.
+- Repo, które wydaje **kilka niezależnych artefaktów** (marketplace pluginów,
+  monorepo paczek), nie ma jednej wersji: numer i tag idą per artefakt
+  (`<artefakt>-<wersja>`), a podbija się tylko to, czego dotknął merge. Podbicie
+  wszystkich naraz zapowiada aktualizację tam, gdzie nic się nie zmieniło.
 - Merge bez treści do wydania (same `docs/`) kończy się zielono z wypisanym powodem.
 
 Uzasadnienia i pełna lista pułapek: `get_rule("ci-pipeline")`, sekcja „Wydanie po

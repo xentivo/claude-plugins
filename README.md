@@ -6,6 +6,9 @@ samym Claude.
 
 **Repozytorium:** https://github.com/xentivo/claude-plugins
 
+<!-- Kolumnę „Wersja" przepisuje krok wydania (scripts/release.sh) z manifestów
+     pluginów. Nie edytuj jej z ręki i nie zmieniaj formatu wiersza. -->
+
 | Plugin | Wersja | Komendy | Do czego |
 | --- | --- | --- | --- |
 | **claude-memory** | 1.0.2 | `/claude-memory:resume` `:save` `:graph` | Trwała pamięć między sesjami i mapa repo |
@@ -28,6 +31,11 @@ Aktualizacja po zmianach w tym repo:
 ```
 /plugin marketplace update
 ```
+
+Numery wersji podbija **krok wydania po merge'u do `main`**, per plugin i tylko
+tam, gdzie faktycznie coś się zmieniło — nie robi się tego z ręki w PR-ze. Co
+weszło do której wersji, mówi [`CHANGELOG.md`](CHANGELOG.md); szczegóły
+mechanizmu są w [`CLAUDE.md`](CLAUDE.md), sekcja „Wydanie".
 
 Marketplace nazywał się wcześniej `claude-memory`. Jeżeli masz go dodanego pod
 starą nazwą, `/plugin marketplace update` nie wystarczy — usuń go i dodaj
@@ -102,6 +110,9 @@ To repozytorium jest jednocześnie **marketplace** i źródłem pluginów:
 
 ```
 .claude-plugin/marketplace.json   # katalog marketplace: jakie pluginy są w repo
+.github/workflows/release.yml     # po merge'u do main: wersje pluginów + changelog
+scripts/release.sh                # logika wydania; `--dry-run` pokazuje wynik
+CHANGELOG.md                      # generowany, nie edytuj z ręki
 plugins/
 ├── claude-memory/
 │   ├── .claude-plugin/plugin.json

@@ -4,6 +4,32 @@ Trwałe ustalenia architektoniczne i świadome kompromisy. Najnowsze na górze. 
 
 ---
 
+## 2026-09-07 - Wersja per plugin, tag z prefiksem nazwy
+
+Krok wydania podbija `version` osobno w każdym pluginie, którego dotknął merge,
+i taguje `<plugin>-<wersja>` (`pipeline-1.1.0`). „Wersji repo" tu nie ma i nie
+powinno być: `version` w manifeście jest polem, po którym klient rozpoznaje
+dostępność aktualizacji, więc podbicie wszystkich naraz zapowiadałoby aktualizację
+pluginów, w których nic się nie zmieniło - i każdy użytkownik dostawałby trzy
+aktualizacje za jedną zmianę.
+
+To wyjątek od zasady `versioning` („numer w jednym miejscu na repo"), więc wyjątek
+poszedł do samej zasady, a nie tylko tutaj: repo bez wspólnego artefaktu wersjonuje
+per artefakt, repo budujące jeden obraz ma jeden numer.
+
+Konsekwencja, którą trzeba znać przy zmianach w tym repo: granica artefaktu biegnie
+po katalogu pluginu, a wewnątrz niego artefaktem jest wszystko poza `README.md`.
+Markdown jest tu produktem, nie dokumentacją - dlatego reguła „*.md nie zasługuje
+na numer" z zasady `versioning` nie stosuje się do `SKILL.md`.
+
+Druga konsekwencja: tabela wersji w `README.md` jest przepisywana przez skrypt
+wydania i pada czerwono, gdy nie znajdzie wiersza. Alternatywą było usunięcie
+kolumny (żeby nie mieć drugiej kopii numeru), ale tabela jest pierwszą rzeczą,
+którą widzi ktoś wchodzący do repo. Kopia generowana i pilnowana bije kopię
+utrzymywaną ręcznie.
+
+---
+
 ## 2026-09-07 - Krok wydania trafia do skilla `deploy`, nie do czwartego skilla
 
 Zasada `ci-pipeline` dostała sekcję „Wydanie po merge'u" (podbicie wersji plus wpis
