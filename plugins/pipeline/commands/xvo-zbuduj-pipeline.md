@@ -24,8 +24,10 @@ plus `sekrety`, bo dotyczy każdego workflow.
 Ustal i wypisz jednym akapitem: stack i menedżer pakietów, komendy lint/build/test z
 `package.json` (albo odpowiednika), obecność `Dockerfile` i skryptów deployowych,
 gałąź domyślną, docelowy rejestr obrazów i środowiska, oraz to, co już leży w
-`.github/workflows/`. Sprawdź `.gitignore` pod kątem kodu generowanego, który
-importuje aplikacja.
+`.github/workflows/`. Ustal też, gdzie stoi numer wersji (JS: `version` w głównym
+`package.json`; Java: korzeniowy `pom.xml` albo `build.gradle`/`gradle.properties`),
+czy repo ma `CHANGELOG.md` i czy istnieje tag poprzedniego wydania. Sprawdź
+`.gitignore` pod kątem kodu generowanego, który importuje aplikacja.
 
 Jeśli repo ma skrypt deployowy, pipeline ma go **wołać**, a nie odtwarzać jego kroki.
 Brak takiego skryptu odnotuj jako brak i zaproponuj jego napisanie osobno.
@@ -34,7 +36,8 @@ Brak takiego skryptu odnotuj jako brak i zaproponuj jego napisanie osobno.
 
 Przedstaw listę plików do utworzenia lub zmiany, a przy każdym: wyzwalacze, joby i
 to, co dany job łapie. Dopiero po tym twórz pliki. Bez zakresu w argumencie zakładaj
-całość: bramka PR-a, skan zależności, deploy na środowisko, auto-merge.
+całość: bramka PR-a, skan zależności, deploy na środowisko, wydanie po merge'u
+(podbicie wersji plus wpis w changelogu), auto-merge.
 
 Nie kopiuj workflowów z `xentivo/aria` żywcem. Bierz z nich reguły, a wartości
 (obrazy usług, nazwy zmiennych, komendy, ścieżki wykluczeń) wyprowadzaj z tego repo.
@@ -49,14 +52,18 @@ Szczególnie: `ready_for_review` w wyzwalaczach, `concurrency` w obie strony
 (`true` na PR-ze, `false` w deployu), `permissions` zawężone na górze pliku, warunki
 na `env` a nie na `secrets`, obce akcje przypięte do SHA, krok generujący kod w każdym
 jobie kompilującym, weryfikacja po deployu w kolejności obraz - stan rewizji -
-health-check.
+health-check. W kroku wydania: `fetch-depth: 0` z tagami, autor PR-a a nie autor
+commita mergującego w linijce changeloga, `paths-ignore` na wersji, changelogu
+i lockfile plus warunek na commicie (inaczej krok wywoła sam siebie), i build
+czytający numer PO podbiciu - przez `needs:` albo przez wyzwalacz na tagu.
 
 ## 4. Powiedz, czego pliki nie załatwią
 
 Zakończ listą rzeczy do ustawienia poza repozytorium: wymagane checki w ochronie
 gałęzi (z nazwami jobów), environments i sekrety w nich, federated credentials dla
-OIDC, „Allow auto-merge", PAT dla automatu. Zaznacz, że pierwszy bieg uruchomiony
-ręcznie jest jedynym testem konfiguracji OIDC.
+OIDC, „Allow auto-merge", PAT dla automatu oraz **bypass tego automatu w ochronie
+gałęzi** - bez niego commit wydania odbije się od chronionego pnia. Zaznacz, że
+pierwszy bieg uruchomiony ręcznie jest jedynym testem konfiguracji OIDC.
 
 Nie wymyślaj wartości sekretów ani identyfikatorów chmury. Czego nie wiesz, wypisz
 jako do uzupełnienia przez człowieka.

@@ -7,7 +7,7 @@ CI/CD zgodnie z zasadą `ci-pipeline` organizacji Xentivo.
 
 | Komponent | Ile | Do czego |
 |---|---|---|
-| Skille | 3 | `bramka-pr`, `deploy`, `sekrety` - procedury dla trzech obszarów pipeline'u |
+| Skille | 3 | `bramka-pr`, `deploy` (deploy i wydanie po merge'u), `sekrety` - procedury dla trzech obszarów pipeline'u |
 | Komendy | 1 | `xvo-zbuduj-pipeline` - zbuduj albo uzupełnij pipeline repozytorium |
 | Agenci | 0 | niepotrzebni |
 | Hooki | 0 | niepotrzebne |
