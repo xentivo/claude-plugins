@@ -54,8 +54,32 @@ Komendy są namespace'owane nazwą pluginu: `/claude-memory:resume`,
 `/claude-memory:save`, `/claude-memory:graph`, `/czlowiek:humanizuj`,
 `/czlowiek:czlowiek`, `/pipeline:xvo-zbuduj-pipeline`. Pamięć (`docs/claude-memory/`) jest per-projekt —
 `/claude-memory:save` zakłada ją z wbudowanych szablonów przy pierwszym
-uruchomieniu. Aktualizacja: push do repo + `/plugin marketplace update`;
-po każdej zmianie pluginu podbij jego `version`, bo po tym polu rozpoznawana
-jest dostępność aktualizacji.
+uruchomieniu. Aktualizacja: push do repo + `/plugin marketplace update`.
+
+## Wydanie: `version` podbija pipeline, nie Ty
+
+Po merge'u do `main` workflow „Wydanie (wersje pluginów + changelog)" woła
+`scripts/release.sh`. Skrypt sprawdza, którego pluginu dotknęły zmiany od jego
+ostatniego taga, podbija `version` w jego manifeście, dopisuje wpis do
+`CHANGELOG.md` w formie `zmiana - kto przygotował` i zakłada tag
+`<plugin>-<wersja>`. Zasady organizacji: `versioning` i `ci-pipeline` (sekcja
+„Wydanie po merge'u"). `./scripts/release.sh --dry-run` pokazuje, co by wyszło.
+
+- **Nie podbijaj `version` z ręki i nie edytuj `CHANGELOG.md`.** Ręczny bump
+  konfliktuje z każdym równolegle otwartym PR-em, a przy automerge domyślnym
+  nikt tego nie zauważy przed merge'em. Opis zmiany pisze się w tytule PR-a -
+  z niego powstaje wpis.
+- **Wersja jest per plugin**, bo po tym polu klient rozpoznaje dostępność
+  aktualizacji. Podbicie wszystkich naraz zapowiadałoby aktualizację pluginów,
+  w których nic się nie zmieniło. Dlatego tagi mają prefiks nazwy pluginu -
+  „wersji repo" tutaj nie ma.
+- **Tabela wersji w README jest przepisywana przez skrypt.** Jeśli usuniesz albo
+  przeformatujesz wiersz pluginu, krok wydania padnie czerwono zamiast cicho
+  zostawić README kłamiące o tym, co jest w marketplace.
+- **Wewnątrz katalogu pluginu artefaktem jest wszystko poza jego `README.md`** -
+  markdown jest tu produktem, nie dokumentacją. Zmiana samego README pluginu albo
+  plików w korzeniu repo nie podbija niczego.
+- Krok pushuje na chroniony pień, więc wymaga sekretu `RELEASE_TOKEN`
+  **z bypassem w ochronie gałęzi**.
 
 Tę sekcję „Pamięć Claude" warto wkleić do `~/.claude/CLAUDE.md`.
