@@ -1,21 +1,21 @@
 {
-  "generated": "2026-08-19T09:46:08Z",
+  "generated": "2026-09-07T09:43:37Z",
   "root": ".",
   "stats": {
-    "files_scanned": 27,
-    "nodes": 27,
-    "edges": 5
+    "files_scanned": 35,
+    "nodes": 35,
+    "edges": 6
   },
   "nodes": [
     {
       "id": ".claude-plugin/marketplace.json",
       "type": "other",
-      "size": 524
+      "size": 729
     },
     {
       "id": "CLAUDE.md",
       "type": "markdown",
-      "size": 2851
+      "size": 3321
     },
     {
       "id": "LICENSE",
@@ -25,7 +25,7 @@
     {
       "id": "README.md",
       "type": "markdown",
-      "size": 4709
+      "size": 6218
     },
     {
       "id": "docs/claude-memory/README.md",
@@ -35,7 +35,7 @@
     {
       "id": "docs/claude-memory/decisions.md",
       "type": "markdown",
-      "size": 7237
+      "size": 8156
     },
     {
       "id": "docs/claude-memory/sessions/2026-05-18-add-code-memory-system.md",
@@ -66,6 +66,16 @@
       "id": "docs/claude-memory/sessions/2026-08-19-naprawa-pluginu-czlowiek.md",
       "type": "markdown",
       "size": 4687
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-08-25-plugin-pipeline.md",
+      "type": "markdown",
+      "size": 3530
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-09-07-wydanie-po-mergeu.md",
+      "type": "markdown",
+      "size": 2483
     },
     {
       "id": "docs/claude-memory/sessions/_TEMPLATE.md",
@@ -152,6 +162,36 @@
       "id": "plugins/czlowiek/skills/czlowiek/SKILL.md",
       "type": "markdown",
       "size": 9569
+    },
+    {
+      "id": "plugins/pipeline/.claude-plugin/plugin.json",
+      "type": "other",
+      "size": 285
+    },
+    {
+      "id": "plugins/pipeline/README.md",
+      "type": "markdown",
+      "size": 1991
+    },
+    {
+      "id": "plugins/pipeline/commands/xvo-zbuduj-pipeline.md",
+      "type": "markdown",
+      "size": 3828
+    },
+    {
+      "id": "plugins/pipeline/skills/bramka-pr/SKILL.md",
+      "type": "markdown",
+      "size": 3629
+    },
+    {
+      "id": "plugins/pipeline/skills/deploy/SKILL.md",
+      "type": "markdown",
+      "size": 6249
+    },
+    {
+      "id": "plugins/pipeline/skills/sekrety/SKILL.md",
+      "type": "markdown",
+      "size": 4623
     }
   ],
   "edges": [
@@ -173,6 +213,11 @@
     {
       "from": "README.md",
       "to": "plugins/czlowiek/README.md",
+      "kind": "link"
+    },
+    {
+      "from": "README.md",
+      "to": "plugins/pipeline/README.md",
       "kind": "link"
     },
     {
