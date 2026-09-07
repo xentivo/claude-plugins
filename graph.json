@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-07T12:41:27Z",
+  "generated": "2026-09-07T13:34:12Z",
   "root": ".",
   "stats": {
-    "files_scanned": 39,
-    "nodes": 39,
+    "files_scanned": 41,
+    "nodes": 41,
     "edges": 8
   },
   "nodes": [
@@ -15,7 +15,7 @@
     {
       "id": ".github/workflows/release.yml",
       "type": "other",
-      "size": 2326
+      "size": 3688
     },
     {
       "id": "CHANGELOG.md",
@@ -25,7 +25,7 @@
     {
       "id": "CLAUDE.md",
       "type": "markdown",
-      "size": 4797
+      "size": 5213
     },
     {
       "id": "LICENSE",
@@ -35,7 +35,7 @@
     {
       "id": "README.md",
       "type": "markdown",
-      "size": 6915
+      "size": 6998
     },
     {
       "id": "docs/claude-memory/README.md",
@@ -86,6 +86,11 @@
       "id": "docs/claude-memory/sessions/2026-09-07-krok-wydania-implementacja.md",
       "type": "markdown",
       "size": 2837
+    },
+    {
+      "id": "docs/claude-memory/sessions/2026-09-07-token-appa-dla-wydania.md",
+      "type": "markdown",
+      "size": 2310
     },
     {
       "id": "docs/claude-memory/sessions/2026-09-07-wydanie-po-mergeu.md",
@@ -206,7 +211,12 @@
     {
       "id": "plugins/pipeline/skills/sekrety/SKILL.md",
       "type": "markdown",
-      "size": 4623
+      "size": 5429
+    },
+    {
+      "id": "scripts/github-app-token.sh",
+      "type": "shell",
+      "size": 4922
     },
     {
       "id": "scripts/release.sh",

@@ -22,6 +22,15 @@ on:
       - "plugins/*/.claude-plugin/plugin.json"
   workflow_dispatch:
 
+# Push commita wydania idzie tokenem instalacji GitHub Appa (Xvo Bot App), nie
+# GITHUB_TOKEN-em. Dwa powody, oba twarde: zdarzenia wywołane GITHUB_TOKEN-em nie
+# startują kolejnych workflowów, a push na chroniony pień wymaga bypassu, który
+# nadaje się aktorowi - Appowi w regule organizacji, nie każdemu repo z osobna.
+#
+# Poświadczenia Appa (App ID i klucz prywatny) stoją jako sekrety ORGANIZACJI,
+# więc nowe repo nie wymaga własnej konfiguracji. Token jest mintowany na bieżąco,
+# żyje godzinę i jest zawężony do tego repo oraz dwóch uprawnień - szczegóły
+# i uzasadnienie w scripts/github-app-token.sh.
 permissions:
   contents: read
 
@@ -34,12 +43,18 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, '[wydanie]') }}
     runs-on: ubuntu-latest
     steps:
+      # Sprawdzenie idzie przed checkoutem, żeby brak konfiguracji kończył bieg
+      # od razu i z nazwą brakującego sekretu, a nie dziesięć kroków później.
       - name: Sprawdź komplet konfiguracji
         env:
-          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          APP_ID: ${{ secrets.XVO_BOT_APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.XVO_BOT_PRIVATE_KEY }}
         run: |
-          if [ -z "${RELEASE_TOKEN}" ]; then
-            echo "::error::Brak sekretu RELEASE_TOKEN. Ustaw go w Settings > Secrets and variables > Actions: PAT (fine-grained: Contents Read and write, Pull requests Read) albo token GitHub Appa. Token musi mieć bypass w ochronie gałęzi, inaczej push commita wydania odbije się od chronionego pnia."
+          missing=""
+          [ -n "${APP_ID}" ] || missing="${missing} XVO_BOT_APP_ID"
+          [ -n "${APP_PRIVATE_KEY}" ] || missing="${missing} XVO_BOT_PRIVATE_KEY"
+          if [ -n "${missing}" ]; then
+            echo "::error::Brak sekretów:${missing}. To sekrety ORGANIZACJI (Organization settings > Secrets and variables > Actions, widoczność All repositories), nie repozytorium - stawia się je raz dla całej organizacji. Wartości: App ID oraz cała treść pliku .pem wygenerowanego dla Xvo Bot App."
             exit 1
           fi
 
@@ -49,11 +64,19 @@ jobs:
           # Zakres liczy się od taga poprzedniego wydania pluginu, a shallow
           # checkout tagów nie widzi: krok uznałby, że wydania nigdy nie było.
           fetch-depth: 0
-          # Obca akcja nie dostaje tokena automatu do ręki; push robi skrypt,
-          # podając go wprost, więc token nie zostaje też w .git/config.
+          # Obca akcja nie dostaje poświadczeń do ręki; push robi skrypt, podając
+          # token wprost, więc nie zostaje on też w .git/config po biegu.
           persist-credentials: false
 
-      - name: Wydanie
+      # Checkout musi być wyżej, bo skrypt mintujący leży w repo.
+      - name: Token instalacji Xvo Bot App
         env:
-          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          APP_ID: ${{ secrets.XVO_BOT_APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.XVO_BOT_PRIVATE_KEY }}
+        run: |
+          token="$(./scripts/github-app-token.sh)"
+          echo "::add-mask::${token}"
+          echo "RELEASE_TOKEN=${token}" >> "$GITHUB_ENV"
+
+      - name: Wydanie
         run: ./scripts/release.sh
