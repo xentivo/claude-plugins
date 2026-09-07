@@ -10,7 +10,7 @@ samym Claude.
 | --- | --- | --- | --- |
 | **claude-memory** | 1.0.2 | `/claude-memory:resume` `:save` `:graph` | Trwała pamięć między sesjami i mapa repo |
 | **czlowiek** | 1.1.0 | `/czlowiek:humanizuj` `/czlowiek:czlowiek` | Redakcja polskich tekstów, usuwanie AI-owych wzorców |
-| **pipeline** | 1.0.0 | `/pipeline:xvo-zbuduj-pipeline` | Budowanie pipeline'ów CI/CD zgodnie z zasadą `ci-pipeline` |
+| **pipeline** | 1.1.0 | `/pipeline:xvo-zbuduj-pipeline` | Budowanie pipeline'ów CI/CD zgodnie z zasadą `ci-pipeline` |
 
 ## Instalacja
 
@@ -83,7 +83,7 @@ Budowanie i poprawianie pipeline'ów CI/CD zgodnie z zasadą `ci-pipeline` organ
 | --- | --- | --- |
 | **komenda** `xvo-zbuduj-pipeline` | `/pipeline:xvo-zbuduj-pipeline [zakres]` | Gdy stawiasz pipeline w repo albo uzupełniasz brakujący obszar |
 | **skill** `bramka-pr` | odpala się sam | Przy edycji workflowów uruchamianych na `pull_request` |
-| **skill** `deploy` | odpala się sam | Gdy workflow buduje obraz, wdraża rewizję albo robi rollback |
+| **skill** `deploy` | odpala się sam | Gdy workflow buduje obraz, wdraża rewizję, robi rollback albo wydaje wersję po merge'u |
 | **skill** `sekrety` | odpala się sam | Gdy workflow dotyka sekretów, tokenów, `permissions`, OIDC albo obcych akcji |
 
 Treść normatywna nie jest tutaj: reguły żyją w `content/ci-pipeline.md`

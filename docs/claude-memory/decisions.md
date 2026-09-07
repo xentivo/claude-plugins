@@ -4,6 +4,25 @@ Trwałe ustalenia architektoniczne i świadome kompromisy. Najnowsze na górze. 
 
 ---
 
+## 2026-09-07 - Krok wydania trafia do skilla `deploy`, nie do czwartego skilla
+
+Zasada `ci-pipeline` dostała sekcję „Wydanie po merge'u" (podbicie wersji plus wpis
+w changelogu). Procedura idzie do `deploy`, bo o wciągnięciu skilla decyduje opis,
+a workflow, który wydaje wersję, jest tym samym plikiem, który buduje obraz i wdraża -
+człowiek pisze to w jednym siadzie. Czwarty skill `wydanie` konkurowałby opisem
+z `deploy` przy tym samym pliku i wygrywałby losowo.
+
+Granica zostaje bez zmian: podział biegnie po momencie użycia (bramka PR-a, deploy,
+sekrety) - tak jak ustalono przy powstaniu pluginu, wpis 2026-08-24 w `decisions.md`
+repo `xentivo/mcp-org-rules`. Wydanie jest momentem deployu, nie osobnym.
+
+Konsekwencja, o której trzeba pamiętać przy tym repo: `version` w `plugin.json`
+podbijamy nadal ręcznie. To pole nie jest wersją produktu, tylko sygnałem dla
+marketplace'u, że jest aktualizacja - a `claude-plugins` nie ma pipeline'u, który
+mógłby je podbić po merge'u.
+
+---
+
 ## 2026-08-19 — Komenda w pluginie jest cienka, logika siedzi w skillu
 
 **Decyzja:** `czlowiek` dostał komendę `commands/humanizuj.md`
