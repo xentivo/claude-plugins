@@ -112,6 +112,7 @@ To repozytorium jest jednocześnie **marketplace** i źródłem pluginów:
 .claude-plugin/marketplace.json   # katalog marketplace: jakie pluginy są w repo
 .github/workflows/release.yml     # po merge'u do main: wersje pluginów + changelog
 scripts/release.sh                # logika wydania; `--dry-run` pokazuje wynik
+scripts/github-app-token.sh       # token instalacji Xvo Bot App dla kroku wydania
 CHANGELOG.md                      # generowany, nie edytuj z ręki
 plugins/
 ├── claude-memory/

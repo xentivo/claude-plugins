@@ -79,7 +79,12 @@ ostatniego taga, podbija `version` w jego manifeście, dopisuje wpis do
 - **Wewnątrz katalogu pluginu artefaktem jest wszystko poza jego `README.md`** -
   markdown jest tu produktem, nie dokumentacją. Zmiana samego README pluginu albo
   plików w korzeniu repo nie podbija niczego.
-- Krok pushuje na chroniony pień, więc wymaga sekretu `RELEASE_TOKEN`
-  **z bypassem w ochronie gałęzi**.
+- **Krok pushuje na chroniony pień tokenem Xvo Bot App.** Token mintuje w biegu
+  `scripts/github-app-token.sh` z dwóch sekretów **organizacji**
+  (`XVO_BOT_APP_ID`, `XVO_BOT_PRIVATE_KEY`) — żyje godzinę i jest zawężony do
+  tego repo oraz `contents: write` i `pull_requests: read`. App musi być na
+  liście **bypass w regule chroniącej `main`**, inaczej push się odbija.
+  Klucza Appa nie podajemy obcej akcji: `actions/create-github-app-token`
+  dostawałby do ręki poświadczenie ważne w całej organizacji.
 
 Tę sekcję „Pamięć Claude" warto wkleić do `~/.claude/CLAUDE.md`.

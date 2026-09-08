@@ -38,6 +38,16 @@ Zasady o samych sekretach w repo: `get_rule("security")`.
   nieudane rozbrojenie zakończ błędem. Branie każdego niezerowego kodu wyjścia za „nie
   było czego rozbrajać" znaczy, że wygasły token przepuści merge, który człowiek jawnie
   zatrzymał.
+- **Token GitHub Appa: cztery rzeczy, które wyglądają jak zły klucz, a nim nie są.**
+  Uprawnienia Appa nie dają jeszcze prawa pushu na chroniony pień - App musi być na
+  liście **bypass** w regule gałęzi (raz, w regule organizacji). `404` z
+  `GET /repos/{owner}/{repo}/installation` nie odróżnia „App nie zainstalowany na
+  tym repo" od „złe App ID", więc komunikat błędu ma wymieniać obie przyczyny.
+  Klucz `.pem` wklejony do sekretu z pogubionym łamaniem wiersza wygląda poprawnie
+  i nie działa - waliduj go przez `openssl rsa -check -noout`, zanim policzysz JWT.
+  A żądanie węższych `permissions` niż ma instalacja kończy się błędem, nie
+  zawężeniem. Do tego JWT: `iat` cofnij o minutę (zegar runnera bywa przed zegarem
+  GitHuba), `exp` maksymalnie 10 minut.
 - **Subject federated credentiala musi być w formacie immutable**, z numerycznymi ID
   organizacji i repo. Stary format przechodzi walidację w chmurze bez skargi i wywala
   się dopiero w biegu (`AADSTS700213`). Subject bierz znak w znak z treści błędu albo
